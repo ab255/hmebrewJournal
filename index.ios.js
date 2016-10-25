@@ -1,6 +1,6 @@
 'use strict';
 
 import { AppRegistry } from 'react-native';
-import Root from './app/root'
+import setup from './app/setup'
 
-AppRegistry.registerComponent('homebrewJournal', () => Root);
+AppRegistry.registerComponent('homebrewJournal', () => setup);
