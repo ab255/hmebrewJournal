@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { NavigatorIOS } from 'react-native';
-import HBJApp from './HBJApp.js';
+import BrewedBeerCards from './BrewedBeerCards';
 
 export default class NavigatorIOSApp extends Component {
   render() {
     return (
       <NavigatorIOS
         ref="navigator"
-        intialRoute={{
-          component: HBJApp,
+        initialRoute={{
+          component: BrewedBeerCards,
           title: 'Homebrew Journal'
         }}
         style={{flex:1}}
