@@ -10,14 +10,9 @@ import HBJNavigator from './HBJNavigator';
 import BrewedBeerCards from './BrewedBeerCards';
 
 export default class HBJApp extends Component {
-
   render() {
     return (
-      <View>
-        <StatusBar hidden={true} />
-        {/* <HBJNavigator /> */}
-        <BrewedBeerCards />
-      </View>
+      <HBJNavigator />
     );
   }
 }
