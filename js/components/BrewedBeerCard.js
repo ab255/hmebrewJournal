@@ -6,14 +6,14 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const BrewedBeerCard = ({ BeerName, BeerType, BrewDate }) => {
+const BrewedBeerCard = ({ beerName, beerType, brewDate, onPress }) => {
   return (
-    <TouchableHighlight>
+    <TouchableHighlight onPress={onPress}>
       <View style={styles.brewedBeerCard}>
-        <Text style={styles.beerCardTitle}>{BeerName}</Text>
+        <Text style={styles.beerCardTitle}>{beerName}</Text>
         <View>
-          <Text style={styles.beerCardType}>{BeerType}</Text>
-          <Text style={styles.beerCardDate}>{BrewDate}</Text>
+          <Text style={styles.beerCardType}>{beerType}</Text>
+          <Text style={styles.beerCardDate}>{brewDate}</Text>
         </View>
       </View>
     </TouchableHighlight>
