@@ -13,7 +13,6 @@ export default class NavigatorIOSApp extends Component {
           title: 'Homebrew Journal',
           rightButtonTitle: 'Add',
           onRightButtonPress: () => {
-            // console.log(this)
             this.refs.navigator.push({
               component: AddBrew,
               title: 'Add A Brew Entry',
@@ -21,7 +20,6 @@ export default class NavigatorIOSApp extends Component {
               onLeftButtonPress: () => {
                 this.refs.navigator.pop()
               },
-              rightButtonTitle: 'Add',
             });
           }
         }}
