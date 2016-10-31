@@ -10,13 +10,20 @@ class PreBrewCard extends Component {
   }
 
   render() {
-    console.log(this)
     return (
       <ScrollView>
-        {/* <Text>{this.props.route.beer.beerName}</Text>
-        <Text>{this.props.route.beer.beerType}</Text>
-        <Text>{this.props.route.beer.brewDate}</Text>
-        <Text>{this.props.route.beer.brewNotes}</Text> */}
+        <Text>Beer Name</Text>
+        <Text>{this.props.beerName}</Text>
+        <Text>Beer Type</Text>
+        <Text>{this.props.beerType}</Text>
+        <Text>Ingredients</Text>
+        <Text>{this.props.ingredients}</Text>
+        <Text>Water Notes</Text>
+        <Text>{this.props.water}</Text>
+        <Text>Post Brew Ingredients</Text>
+        <Text>{this.props.postBrewIngredients}</Text>
+        <Text>Total Cost</Text>
+        <Text>{this.props.totalCosts}</Text>
       </ScrollView>
     )
   }

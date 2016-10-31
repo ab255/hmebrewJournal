@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import moment from 'moment';
 
 export default class AddBrew extends Component {
   constructor(props){
@@ -16,8 +17,11 @@ export default class AddBrew extends Component {
     this.state = {
       beerName: '',
       beerType: '',
+      ingredients: '',
+      water: '',
+      postBrewIngredients: '',
+      totalCosts: '',
       brewDate: new Date(),
-      brewNotes: '',
       datePickerMode: 'hidden',
     }
   }
@@ -61,25 +65,47 @@ export default class AddBrew extends Component {
           value={this.state.beerType}
           placeholder='Beer Style'
         />
+        <Text>Ingredients:</Text>
+        <TextInput
+          multiline={true}
+          style={styles.ingredientsInput}
+          onChangeText={(ingredients) => this.setState({ingredients})}
+          value={this.state.ingredients}
+          placeholder='Add ingredients used'
+        />
+        <Text>Water:</Text>
+        <TextInput
+          style={styles.brewInput}
+          onChangeText={(water) => this.setState({water})}
+          value={this.state.water}
+          placeholder='Water Used'
+        />
+        <Text>Post Brew Ingredients:</Text>
+        <TextInput
+          multiline={true}
+          style={styles.ingredientsInput}
+          onChangeText={(postBrewIngredients) => this.setState({postBrewIngredients})}
+          value={this.state.postBrewIngredients}
+          placeholder='Add post brew ingredients'
+        />
+        <Text>Total Cost:</Text>
+        <TextInput
+          style={styles.brewInput}
+          onChangeText={(totalCosts) => this.setState({totalCosts})}
+          value={this.state.totalCosts}
+          placeholder='Cost in Dollars'
+        />
         <View style={styles.container}>
           <View>
             <Text>Date</Text>
             <TouchableWithoutFeedback onPress={ this.toggleDatePicker.bind(this) }>
               <View style={ styles.input }>
-                <Text>{ this.state.brewDate.getMonth() + 1 }/{ this.state.brewDate.getDate() }/{ this.state.brewDate.getFullYear() }</Text>
+                <Text>{moment(this.state.brewDate).format('MMMM Do YYYY')}</Text>
               </View>
             </TouchableWithoutFeedback>
           </View>
           { this.state.datePickerMode == 'visible' ? datePicker : <View/> }
         </View>
-        <Text>Brew Notes:</Text>
-        <TextInput
-          multiline={true}
-          style={styles.brewNotesInput}
-          onChangeText={(brewNotes) => this.setState({brewNotes})}
-          value={this.state.brewNotes}
-          placeholder='Take notes on your entire beer process'
-        />
         <TouchableHighlight>
           <View>
             <Text>Submit</Text>
@@ -99,7 +125,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: '#630A10',
   },
-  brewNotesInput: {
+  ingredientsInput: {
     height: 100,
     fontSize: 16,
   },
