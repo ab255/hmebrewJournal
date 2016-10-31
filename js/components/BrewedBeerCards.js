@@ -4,6 +4,7 @@ import { ListView } from 'react-native';
 import BrewedBeerCard from './BrewedBeerCard';
 import store from '../store.js';
 import IndividualBrewNotes from './IndividualBrewNotes';
+import EditBrew from './EditBrew';
 
 
 export default class BrewedBeerCards extends Component {
@@ -19,14 +20,34 @@ export default class BrewedBeerCards extends Component {
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={(beer) => <BrewedBeerCard {...beer} onPress={() => {
-          this.props.navigator.push({
-            component: IndividualBrewNotes,
-            title: beer.beerName,
-            beer
-          });
-        }}/>}
+        renderRow={(beer) => <BrewedBeerCard
+            {...beer}
+            onPress={() => {
+              this.props.navigator.push({
+                component: IndividualBrewNotes,
+                title: beer.beerName,
+                leftButtonTitle: 'Back',
+                onLeftButtonPress: () => {
+                  this.props.navigator.pop()
+                },
+                rightButtonTitle: 'Edit',
+                onRightButtonPress: () => {
+                  this.props.navigator.push({
+                    component: EditBrew,
+                    title:beer.beerName,
+                    leftButtonTitle: 'Cancel',
+                    onLeftButtonPress: () => {
+                      this.props.navigator.pop()
+                    },
+                    beer
+                  })
+                },
+                beer
+              });
+            }}
+          />
+        }
       />
-    )
-  }
+    );
+  };
 }
