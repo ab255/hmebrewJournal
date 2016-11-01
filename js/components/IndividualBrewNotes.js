@@ -12,7 +12,7 @@ import PostBrewCard from '../tabs/PostBrewCard';
 
 export default class IndividualBrewNotes extends Component {
   constructor(props) {
-    super();
+    super(props);
   }
   state = {
     selectedTab: 'preBrew',

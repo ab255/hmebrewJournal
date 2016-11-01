@@ -97,7 +97,7 @@ export default class AddBrew extends Component {
         />
         <View style={styles.container}>
           <View>
-            <Text>Date</Text>
+            <Text>Estimated Brew Date:</Text>
             <TouchableWithoutFeedback onPress={ this.toggleDatePicker.bind(this) }>
               <View style={ styles.input }>
                 <Text>{moment(this.state.brewDate).format('MMMM Do YYYY')}</Text>
