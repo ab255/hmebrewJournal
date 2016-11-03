@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { AsyncStorage, ListView } from 'react-native';
+import {
+  AsyncStorage,
+  ListView,
+  ScrollView,
+  Text,
+} from 'react-native';
 import { autoRehydrate } from 'redux-persist';
 
 import BrewedBeerCard from './BrewedBeerCard';
@@ -14,33 +19,45 @@ export default class BrewedBeerCards extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(mockStore),
-      brews: [],
+      brews: null,
+      isLoading: true,
+      test: null,
     };
   }
 
   componentDidMount() {
-    this.loadInitialState().done();
+    this.loadInitialState()
+    console.log(this.state.brews);
+  }
+
+  componentDidUpdate() {
+    // this.loadInitialState()
+    console.log(this.state.brews);
+    // this.setState({ dataSource: ds.cloneWithRows(this.state.brews)})
   }
 
   loadInitialState = async () => {
-    let store;
+    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    let brewsArray = []
     try {
       await AsyncStorage.getAllKeys((err, keys) => {
         AsyncStorage.multiGet(keys, (err, stores) => {
           stores.map((result, i, store) => {
-            let key = store[i][0];
-            let value = store[i][0];
-            console.log(autoRehydrate(stores));
+            let value = store[i][1];
+            brewsArray.push(JSON.parse(value))
           })
         })
       })
     } catch (error) {
       console.log(error);
     }
+    this.setState({ brews: brewsArray })
+    console.log(this.state.brews);
   }
 
   render() {
     return (
+      <ScrollView>
       <ListView
         dataSource={this.state.dataSource}
         renderRow={(beer) => <BrewedBeerCard
@@ -71,6 +88,7 @@ export default class BrewedBeerCards extends Component {
           />
         }
       />
+      </ScrollView>
     );
   };
 }

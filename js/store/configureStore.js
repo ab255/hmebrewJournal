@@ -8,9 +8,9 @@ import reducers from '../reducers/reducers';
 
 const createBrewStore = applyMiddleware(thunk)(createStore);
 
-const configureStore = () => {
+const configureStore = (onComplete: ?() => void) => {
   const store = autoRehydrate()(createBrewStore)(reducers);
-  persistStore(store, {storage: AsyncStorage});
+  persistStore(store, {storage: AsyncStorage}, onComplete);
   return store;
 }
 

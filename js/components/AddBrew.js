@@ -33,8 +33,7 @@ export default class AddBrew extends Component {
     let uid = this.state.uuid
     let brew = JSON.stringify(this.state)
     try {
-      await AsyncStorage.setItem(uid, brew),
-      console.log(AsyncStorage.getAllKeys())
+      await AsyncStorage.setItem(uid, brew)
     } catch (error) {
       console.log(error);
     }
@@ -47,10 +46,6 @@ export default class AddBrew extends Component {
 
   onDateChange = (date) => {
     this.setState({ brewDate: date })
-  }
-
-  addBrewData = () => {
-
   }
 
   render() {
