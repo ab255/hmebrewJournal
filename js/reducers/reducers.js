@@ -1,10 +1,12 @@
 const brewData = (state = {}, action) => {
   switch (action.type) {
-    case 'EDIT_BREW_DATA':
-      return [...state, Object.assign({}, action.)]
+    case 'ADD_BREW_DATA':
+      return {
+        data: action.data
+      };
     default:
-      return state;
-  }
+      return state
+  };
 }
 
 export default brewData;

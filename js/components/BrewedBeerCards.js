@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { ListView } from 'react-native';
+import { AsyncStorage, ListView } from 'react-native';
+import { autoRehydrate } from 'redux-persist';
 
 import BrewedBeerCard from './BrewedBeerCard';
-import store from '../store.js';
+import mockStore from '../store.js';
 import IndividualBrewNotes from './IndividualBrewNotes';
 import EditBrew from './EditBrew';
 
@@ -12,8 +13,30 @@ export default class BrewedBeerCards extends Component {
     super();
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows(store),
+      dataSource: ds.cloneWithRows(mockStore),
+      brews: [],
     };
+  }
+
+  componentDidMount() {
+    this.loadInitialState().done();
+  }
+
+  loadInitialState = async () => {
+    let store;
+    try {
+      await AsyncStorage.getAllKeys((err, keys) => {
+        AsyncStorage.multiGet(keys, (err, stores) => {
+          stores.map((result, i, store) => {
+            let key = store[i][0];
+            let value = store[i][0];
+            console.log(autoRehydrate(stores));
+          })
+        })
+      })
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {

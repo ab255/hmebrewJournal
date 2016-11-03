@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   ScrollView,
   TextInput,
   Text,
@@ -10,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import moment from 'moment';
+import uuid from 'react-native-uuid'
 
 export default class AddBrew extends Component {
   constructor(props){
@@ -22,7 +24,19 @@ export default class AddBrew extends Component {
       postBrewIngredients: '',
       totalCosts: '',
       brewDate: new Date(),
+      uuid: uuid.v4(),
       datePickerMode: 'hidden',
+    }
+  }
+
+  saveBrew = async () => {
+    let uid = this.state.uuid
+    let brew = JSON.stringify(this.state)
+    try {
+      await AsyncStorage.setItem(uid, brew),
+      console.log(AsyncStorage.getAllKeys())
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -106,7 +120,9 @@ export default class AddBrew extends Component {
           </View>
           { this.state.datePickerMode == 'visible' ? datePicker : <View/> }
         </View>
-        <TouchableHighlight>
+        <TouchableHighlight
+          onPress={this.saveBrew.bind(this)}
+        >
           <View>
             <Text>Submit</Text>
           </View>
