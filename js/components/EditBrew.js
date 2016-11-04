@@ -6,9 +6,9 @@ import {
   TabBarIOS,
 } from 'react-native';
 
-import PreBrewCard from '../tabs/PreBrewCard';
-import BrewDayCard from '../tabs/BrewDayCard';
-import PostBrewCard from '../tabs/PostBrewCard';
+import EditPreBrew from '../tabs/EditPreBrew';
+import EditBrewDay from '../tabs/EditBrewDay';
+import EditPostBrew from '../tabs/EditPostBrew';
 
 export default class IndividualBrewNotes extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ export default class IndividualBrewNotes extends Component {
           onPress={() => {
             this.setState({ selectedTab: 'preBrew', });
         }}>
-          <PreBrewCard
+          <EditPreBrew
             {...this.props.route.beer}
           />
         </TabBarIOS.Item>
@@ -40,7 +40,7 @@ export default class IndividualBrewNotes extends Component {
           onPress={() => {
             this.setState({ selectedTab : 'brewDay'});
           }}>
-            <BrewDayCard
+            <EditBrewDay
               {...this.props.route.beer}
             />
           </TabBarIOS.Item>
@@ -50,7 +50,7 @@ export default class IndividualBrewNotes extends Component {
             onPress={() => {
               this.setState({ selectedTab : 'postBrew'});
           }}>
-            <PostBrewCard
+            <EditPostBrew
               {...this.props.route.beer}
             />
           </TabBarIOS.Item>
@@ -58,8 +58,3 @@ export default class IndividualBrewNotes extends Component {
     )
   }
 }
-
-styles = StyleSheet.create({
-  container: {
-  }
-})
