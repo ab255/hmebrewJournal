@@ -3,9 +3,9 @@ import {
   AsyncStorage,
   ListView,
   ScrollView,
+  StyleSheet,
   Text,
 } from 'react-native';
-import { autoRehydrate } from 'redux-persist';
 
 import BrewedBeerCard from './BrewedBeerCard';
 import mockStore from '../store.js';
@@ -25,8 +25,8 @@ export default class BrewedBeerCards extends Component {
     };
   }
 
-  componentDidMount() {
-    this.loadInitialState()
+  componentWillMount() {
+    this.loadInitialState().done()
     console.log(this.state.brews);
   }
 
@@ -43,8 +43,8 @@ export default class BrewedBeerCards extends Component {
       await AsyncStorage.getAllKeys((err, keys) => {
         AsyncStorage.multiGet(keys, (err, stores) => {
           stores.map((result, i, store) => {
-            let value = store[i][1];
-            brewsArray.push(JSON.parse(value))
+            let value = JSON.parse(store[i][1]);
+            brewsArray.push(value)
           })
         })
       })
@@ -57,7 +57,7 @@ export default class BrewedBeerCards extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
       <ListView
         dataSource={this.state.dataSource}
         renderRow={(beer) => <BrewedBeerCard
@@ -92,3 +92,10 @@ export default class BrewedBeerCards extends Component {
     );
   };
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#911F27',
+    flex: 1,
+  }
+})

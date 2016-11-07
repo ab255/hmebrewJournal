@@ -5,11 +5,21 @@
 //   }
 // }
 
-export const addBrew = brewData => {
+export const addBrew = async (brewData) => {
   console.log('in add brew action creator'),
-  return {
-    type: 'ADD_BREW_DATA',
-    brewData
+  return (dispatch) => {
+    let uid = brewData.uuid
+    let brew = JSON.stringify(brewData)
+    try {
+      await AsyncStorage.setItem(uid, brew)
+    }
+    .then(() => {
+      type: 'ADD_BREW_DATA',
+      brewData
+    })
+    .catch(error => {
+      console.log('Error saving Brew Data:', error);
+    })
   };
 };
 

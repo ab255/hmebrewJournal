@@ -21,10 +21,11 @@ export default class IndividualBrewNotes extends Component {
   render() {
     return (
       <TabBarIOS
-        unselectedTintColor='#FFFFFF'
-        tintColor='#630A10'
-        barTintColor='#911F27'>
+        tintColor='#F7D098'
+        barTintColor='#630A10'
+        style={styles.container}>
         <TabBarIOS.Item
+          icon={require('../icons/preBrew.png')}
           title='Pre Brew'
           selected={this.state.selectedTab === 'preBrew'}
           onPress={() => {
@@ -35,6 +36,7 @@ export default class IndividualBrewNotes extends Component {
           />
         </TabBarIOS.Item>
         <TabBarIOS.Item
+          icon={require('../icons/brewDay.png')}
           title='Brew Day'
           selected={this.state.selectedTab === 'brewDay'}
           onPress={() => {
@@ -45,6 +47,7 @@ export default class IndividualBrewNotes extends Component {
             />
           </TabBarIOS.Item>
           <TabBarIOS.Item
+            icon={require('../icons/postBrew.png')}
             title='Post Brew'
             selected={this.state.selectedTab === 'postBrew'}
             onPress={() => {

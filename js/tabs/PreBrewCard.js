@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
   ScrollView,
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -12,34 +13,52 @@ class PreBrewCard extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
         <View>
-          <Text>Beer Name</Text>
-          <Text>{this.props.beerName}</Text>
+          <Text style={styles.title}>Beer Name</Text>
+          <Text style={styles.body}>{this.props.beerName}</Text>
         </View>
         <View>
-          <Text>Beer Type</Text>
-          <Text>{this.props.beerType}</Text>
+          <Text style={styles.title}>Beer Type</Text>
+          <Text style={styles.body}>{this.props.beerType}</Text>
         </View>
         <View>
-          <Text>Ingredients</Text>
-          <Text>{this.props.ingredients}</Text>
+          <Text style={styles.title}>Ingredients</Text>
+          <Text style={styles.body}>{this.props.ingredients}</Text>
         </View>
         <View>
-          <Text>Water Notes</Text>
-          <Text>{this.props.water}</Text>
+          <Text style={styles.title}>Water Notes</Text>
+          <Text style={styles.body}>{this.props.water}</Text>
         </View>
         <View>
-          <Text>Post Brew Ingredients</Text>
-          <Text>{this.props.postBrewIngredients}</Text>
+          <Text style={styles.title}>Post Brew Ingredients</Text>
+          <Text style={styles.body}>{this.props.postBrewIngredients}</Text>
         </View>
         <View>
-          <Text>Total Cost</Text>
-          <Text>{this.props.totalCosts}</Text>
+          <Text style={styles.title}>Total Cost</Text>
+          <Text style={styles.body}>{this.props.totalCosts}</Text>
         </View>
       </ScrollView>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+  title: {
+    color: '#911F27',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
+    marginBottom: 7,
+  },
+  body: {
+    color: '#630A10',
+    fontSize: 16,
+    marginBottom: 10,
+  },
+})
 
 export default PreBrewCard;

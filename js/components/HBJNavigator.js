@@ -11,7 +11,7 @@ export default class NavigatorIOSApp extends Component {
         initialRoute={{
           component: BrewedBeerCards,
           title: 'Homebrew Journal',
-          rightButtonTitle: 'Add',
+          rightButtonSystemIcon: 'add',
           onRightButtonPress: () => {
             this.refs.navigator.push({
               component: AddBrew,
