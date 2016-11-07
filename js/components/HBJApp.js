@@ -10,8 +10,8 @@ import HBJNavigator from './HBJNavigator';
 import BrewedBeerCards from './BrewedBeerCards';
 import AddBrew from './AddBrew';
 
-export default class HBJApp extends Component {
 
+export default class HBJApp extends Component {
   render() {
     return (
         <HBJNavigator />

@@ -10,6 +10,7 @@ import PreBrewCard from '../tabs/PreBrewCard';
 import BrewDayCard from '../tabs/BrewDayCard';
 import PostBrewCard from '../tabs/PostBrewCard';
 
+
 export default class IndividualBrewNotes extends Component {
   constructor(props) {
     super(props);

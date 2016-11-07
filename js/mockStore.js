@@ -18,6 +18,7 @@ const store = [
   hydrometerReading: '1.015',
   typeOfPackaging: '',
   notesAboutPackaging: '',
+  uuid: 'f7ff7086-c474-44a0-bcca-f2fde6fd3118',
   },
   {beerName: 'Red Dawn',
   beerType: 'American Amber Ale',
@@ -38,6 +39,7 @@ const store = [
   hydrometerReading: '',
   typeOfPackaging: '',
   notesAboutPackaging: '',
+  uuid: '8c4516d0-bc37-4251-beca-43c8332eee47',
 }
 ];
 

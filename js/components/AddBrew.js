@@ -13,7 +13,6 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import moment from 'moment';
 import uuid from 'react-native-uuid'
 
-// import * as actions from '../actions/actions'
 
 export default class AddBrew extends Component {
   constructor(props){
@@ -36,10 +35,10 @@ export default class AddBrew extends Component {
     let brew = JSON.stringify(this.state)
     try {
       await AsyncStorage.setItem(uid, brew)
+      this.props.navigator.pop()
     } catch (error) {
       console.log(error);
     }
-    console.log(brew)
   }
 
   moveBack = () => {
@@ -56,7 +55,6 @@ export default class AddBrew extends Component {
   }
 
   render() {
-    console.log(this.state.brewDate);
     let datePicker = (
       <View style={styles.datePicker}>
         <DatePickerIOS

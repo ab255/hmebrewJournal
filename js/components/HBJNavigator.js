@@ -3,6 +3,7 @@ import { NavigatorIOS } from 'react-native';
 import BrewedBeerCards from './BrewedBeerCards';
 import AddBrew from './AddBrew';
 
+
 export default class NavigatorIOSApp extends Component {
   render() {
     return (

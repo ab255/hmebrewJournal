@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import moment from 'moment';
 
+
 const BrewedBeerCard = ({ beerName, beerType, brewDate, onPress }) => {
   return (
     <TouchableHighlight onPress={onPress}>

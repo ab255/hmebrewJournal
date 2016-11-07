@@ -10,6 +10,7 @@ import EditPreBrew from '../tabs/EditPreBrew';
 import EditBrewDay from '../tabs/EditBrewDay';
 import EditPostBrew from '../tabs/EditPostBrew';
 
+
 export default class IndividualBrewNotes extends Component {
   constructor(props) {
     super(props);
@@ -22,9 +23,9 @@ export default class IndividualBrewNotes extends Component {
     return (
       <TabBarIOS
         tintColor='#F7D098'
-        barTintColor='#630A10'
-        style={styles.container}>
+        barTintColor='#630A10'>
         <TabBarIOS.Item
+          style={styles.break}
           icon={require('../icons/preBrew.png')}
           title='Pre Brew'
           selected={this.state.selectedTab === 'preBrew'}
@@ -63,8 +64,8 @@ export default class IndividualBrewNotes extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderTopWidth: 20,
+  breack: {
+    borderWidth: 20,
     borderColor: '#F7D098',
   },
 })

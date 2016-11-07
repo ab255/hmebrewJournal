@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import BrewedBeerCard from './BrewedBeerCard';
-import mockStore from '../store.js';
+import mockStore from '../mockStore';
 import IndividualBrewNotes from './IndividualBrewNotes';
 import EditBrew from './EditBrew';
 
@@ -20,39 +20,26 @@ export default class BrewedBeerCards extends Component {
     this.state = {
       dataSource: ds.cloneWithRows(mockStore),
       brews: null,
-      isLoading: true,
-      test: null,
     };
   }
 
   componentWillMount() {
     this.loadInitialState().done()
-    console.log(this.state.brews);
   }
 
-  componentDidUpdate() {
-    // this.loadInitialState()
-    console.log(this.state.brews);
-    // this.setState({ dataSource: ds.cloneWithRows(this.state.brews)})
-  }
 
   loadInitialState = async () => {
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    let brewsArray = []
     try {
       await AsyncStorage.getAllKeys((err, keys) => {
         AsyncStorage.multiGet(keys, (err, stores) => {
-          stores.map((result, i, store) => {
-            let value = JSON.parse(store[i][1]);
-            brewsArray.push(value)
-          })
+          const brews = stores.map(result => JSON.parse(result[1]));
+          this.setState({ dataSource: ds.cloneWithRows(brews) });
         })
       })
     } catch (error) {
       console.log(error);
     }
-    this.setState({ brews: brewsArray })
-    console.log(this.state.brews);
   }
 
   render() {
