@@ -3,6 +3,7 @@ import { NavigatorIOS } from 'react-native';
 import BrewedBeerCards from './BrewedBeerCards';
 import AddBrew from './AddBrew';
 
+
 export default class NavigatorIOSApp extends Component {
   render() {
     return (
@@ -11,7 +12,7 @@ export default class NavigatorIOSApp extends Component {
         initialRoute={{
           component: BrewedBeerCards,
           title: 'Homebrew Journal',
-          rightButtonTitle: 'Add',
+          rightButtonSystemIcon: 'add',
           onRightButtonPress: () => {
             this.refs.navigator.push({
               component: AddBrew,

@@ -6,9 +6,9 @@ import {
   TabBarIOS,
 } from 'react-native';
 
-import PreBrewCard from '../tabs/PreBrewCard';
-import BrewDayCard from '../tabs/BrewDayCard';
-import PostBrewCard from '../tabs/PostBrewCard';
+import EditPreBrew from '../tabs/EditPreBrew';
+import EditBrewDay from '../tabs/EditBrewDay';
+import EditPostBrew from '../tabs/EditPostBrew';
 
 
 export default class IndividualBrewNotes extends Component {
@@ -23,16 +23,16 @@ export default class IndividualBrewNotes extends Component {
     return (
       <TabBarIOS
         tintColor='#F7D098'
-        barTintColor='#630A10'
-        style={styles.container}>
+        barTintColor='#630A10'>
         <TabBarIOS.Item
+          style={styles.break}
           icon={require('../icons/preBrew.png')}
           title='Pre Brew'
           selected={this.state.selectedTab === 'preBrew'}
           onPress={() => {
             this.setState({ selectedTab: 'preBrew', });
         }}>
-          <PreBrewCard
+          <EditPreBrew
             {...this.props.route.beer}
           />
         </TabBarIOS.Item>
@@ -43,7 +43,7 @@ export default class IndividualBrewNotes extends Component {
           onPress={() => {
             this.setState({ selectedTab : 'brewDay'});
           }}>
-            <BrewDayCard
+            <EditBrewDay
               {...this.props.route.beer}
             />
           </TabBarIOS.Item>
@@ -54,7 +54,7 @@ export default class IndividualBrewNotes extends Component {
             onPress={() => {
               this.setState({ selectedTab : 'postBrew'});
           }}>
-            <PostBrewCard
+            <EditPostBrew
               {...this.props.route.beer}
             />
           </TabBarIOS.Item>
@@ -63,7 +63,9 @@ export default class IndividualBrewNotes extends Component {
   }
 }
 
-styles = StyleSheet.create({
-  container: {
-  }
+const styles = StyleSheet.create({
+  breack: {
+    borderWidth: 20,
+    borderColor: '#F7D098',
+  },
 })
