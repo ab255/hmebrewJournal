@@ -12,18 +12,31 @@ import {
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import moment from 'moment';
 
+import store from '../store'
+
 class EditPostBrew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      DateStartFermentation: this.props.dateStartFermentation || new Date(),
-      FermentationNotes: this.props.fermentationNotes,
-      PackagingDate: this.props.packagingDate || new Date(),
-      HydrometerReading: this.props.hydrometerReading,
-      TypeOfPackaging: this.props.typeOfPackaging,
-      NotesAboutPackaging: this.props.notesAboutPackaging,
+      DateStartFermentation: this.props.route.beer.dateStartFermentation || new Date(),
+      FermentationNotes: this.props.route.beer.fermentationNotes,
+      PackagingDate: this.props.route.beer.packagingDate || new Date(),
+      HydrometerReading: this.props.route.beer.hydrometerReading,
+      TypeOfPackaging: this.props.route.beer.typeOfPackaging,
+      NotesAboutPackaging: this.props.route.beer.notesAboutPackaging,
       datePickerModeOne:'hidden',
       datePickerModeTwo: 'hidden',
+    }
+  }
+
+  editBrew = async () => {
+    let uid = this.props.route.beer.uuid
+    let brew = JSON.stringify(this.state)
+    try {
+      await store.edit(uid, brew)
+      this.props.navigator.pop()
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -136,6 +149,7 @@ class EditPostBrew extends Component {
           />
         </View>
         <TouchableHighlight
+        onPress={this.editBrew.bind(this)}
         >
           <View style={styles.submitButton}>
             <Text style={styles.buttonText}>Submit</Text>

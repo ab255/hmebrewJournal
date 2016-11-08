@@ -10,22 +10,21 @@ import EditPreBrew from '../tabs/EditPreBrew';
 import EditBrewDay from '../tabs/EditBrewDay';
 import EditPostBrew from '../tabs/EditPostBrew';
 
-
 export default class IndividualBrewNotes extends Component {
   constructor(props) {
     super(props);
   }
   state = {
     selectedTab: 'preBrew',
-  };
+  }
 
   render() {
     return (
       <TabBarIOS
         tintColor='#F7D098'
-        barTintColor='#630A10'>
+        barTintColor='#630A10'
+        style={styles.container}>
         <TabBarIOS.Item
-          style={styles.break}
           icon={require('../icons/preBrew.png')}
           title='Pre Brew'
           selected={this.state.selectedTab === 'preBrew'}
@@ -33,7 +32,7 @@ export default class IndividualBrewNotes extends Component {
             this.setState({ selectedTab: 'preBrew', });
         }}>
           <EditPreBrew
-            {...this.props.route.beer}
+            {...this.props}
           />
         </TabBarIOS.Item>
         <TabBarIOS.Item
@@ -44,7 +43,7 @@ export default class IndividualBrewNotes extends Component {
             this.setState({ selectedTab : 'brewDay'});
           }}>
             <EditBrewDay
-              {...this.props.route.beer}
+              {...this.props}
             />
           </TabBarIOS.Item>
           <TabBarIOS.Item
@@ -55,7 +54,7 @@ export default class IndividualBrewNotes extends Component {
               this.setState({ selectedTab : 'postBrew'});
           }}>
             <EditPostBrew
-              {...this.props.route.beer}
+              {...this.props}
             />
           </TabBarIOS.Item>
       </TabBarIOS>
@@ -64,8 +63,8 @@ export default class IndividualBrewNotes extends Component {
 }
 
 const styles = StyleSheet.create({
-  breack: {
-    borderWidth: 20,
+  container: {
+    borderTopWidth: 20,
     borderColor: '#F7D098',
   },
 })

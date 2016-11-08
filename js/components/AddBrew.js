@@ -13,6 +13,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import moment from 'moment';
 import uuid from 'react-native-uuid'
 
+import store from '../store'
+
 
 export default class AddBrew extends Component {
   constructor(props){
@@ -34,8 +36,8 @@ export default class AddBrew extends Component {
     let uid = this.state.uuid
     let brew = JSON.stringify(this.state)
     try {
-      await AsyncStorage.setItem(uid, brew)
-      this.props.navigator.pop()
+      await store.add(uid, brew);
+      this.props.navigator.pop();
     } catch (error) {
       console.log(error);
     }
