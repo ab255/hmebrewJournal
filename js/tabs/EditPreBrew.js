@@ -9,20 +9,34 @@ import {
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
+import store from '../store'
+
 class EditPreBrew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      BeerName: this.props.beerName,
-      BeerType: this.props.beerType,
-      Ingredients: this.props.ingredients,
-      Water: this.props.water,
-      PostBrewIngredients: this.props.postBrewIngredients,
-      TotalCosts: this.props.totalCosts,
+      BeerName: this.props.route.beer.beerName,
+      BeerType: this.props.route.beer.beerType,
+      Ingredients: this.props.route.beer.ingredients,
+      Water: this.props.route.beer.water,
+      PostBrewIngredients: this.props.route.beer.postBrewIngredients,
+      TotalCosts: this.props.route.beer.totalCosts,
+    }
+  }
+
+  editBrew = async () => {
+    let uid = this.props.route.beer.uuid
+    let brew = JSON.stringify(this.state)
+    try {
+      await store.edit(uid, brew)
+      this.props.navigator.popToTop()
+    } catch (error) {
+      console.log(error);
     }
   }
 
   render() {
+    console.log(this);
     return (
       <KeyboardAwareScrollView style={styles.container}>
         <View>
@@ -87,6 +101,7 @@ class EditPreBrew extends Component {
           />
         </View>
         <TouchableHighlight
+        onPress={this.editBrew.bind(this)}
         >
           <View style={styles.submitButton}>
             <Text style={styles.buttonText}>Submit</Text>

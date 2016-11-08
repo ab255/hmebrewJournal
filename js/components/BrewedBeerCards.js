@@ -6,21 +6,35 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import EventEmitter from 'EventEmitter';
 
 import BrewedBeerCard from './BrewedBeerCard';
 import mockStore from '../mockStore';
 import IndividualBrewNotes from './IndividualBrewNotes';
 import EditBrew from './EditBrew';
+import store from '../store'
 
 
 export default class BrewedBeerCards extends Component {
   constructor(props) {
     super();
+    this.EventEmitter = new EventEmitter()
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(mockStore),
-      brews: null,
+      brews: [],
     };
+  }
+
+
+  componentDidMount() {
+    store.addListener('change', async () => {
+      try{
+        await this.loadInitialState().done()
+      } catch (error) {
+        console.log(error);
+      }
+    });
   }
 
   componentWillMount() {
@@ -29,12 +43,12 @@ export default class BrewedBeerCards extends Component {
 
 
   loadInitialState = async () => {
-    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     try {
       await AsyncStorage.getAllKeys((err, keys) => {
         AsyncStorage.multiGet(keys, (err, stores) => {
-          const brews = stores.map(result => JSON.parse(result[1]));
-          this.setState({ dataSource: ds.cloneWithRows(brews) });
+          let brews = stores.map(result => JSON.parse(result[1]));
+          this.setState({ dataSource: ds.cloneWithRows(brews) })
         })
       })
     } catch (error) {
