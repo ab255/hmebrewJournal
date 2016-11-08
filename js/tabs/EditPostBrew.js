@@ -18,12 +18,12 @@ class EditPostBrew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      DateStartFermentation: this.props.route.beer.dateStartFermentation || new Date(),
-      FermentationNotes: this.props.route.beer.fermentationNotes,
-      PackagingDate: this.props.route.beer.packagingDate || new Date(),
-      HydrometerReading: this.props.route.beer.hydrometerReading,
-      TypeOfPackaging: this.props.route.beer.typeOfPackaging,
-      NotesAboutPackaging: this.props.route.beer.notesAboutPackaging,
+      dateStartFermentation: this.props.route.beer.dateStartFermentation || new Date(),
+      fermentationNotes: this.props.route.beer.fermentationNotes || '',
+      packagingDate: this.props.route.beer.packagingDate || new Date(),
+      hydrometerReading: this.props.route.beer.hydrometerReading || '',
+      typeOfPackaging: this.props.route.beer.typeOfPackaging || '',
+      notesAboutPackaging: this.props.route.beer.notesAboutPackaging || '',
       datePickerModeOne:'hidden',
       datePickerModeTwo: 'hidden',
     }
@@ -46,7 +46,7 @@ class EditPostBrew extends Component {
   }
 
   onDateChangeOne = (dateOne) => {
-    this.setState({ DateStartFermentation: dateOne })
+    this.setState({ dateStartFermentation: dateOne })
   }
 
   toggleDatePickerTwo = () => {
@@ -55,14 +55,14 @@ class EditPostBrew extends Component {
   }
 
   onDateChangeTwo = (dateTwo) => {
-    this.setState({ PackagingDate: dateTwo })
+    this.setState({ packagingDate: dateTwo })
   }
 
   render() {
     let datePickerOne = (
       <View style={styles.datePicker}>
         <DatePickerIOS
-          date={new Date(this.state.DateStartFermentation)}
+          date={new Date(this.state.dateStartFermentation)}
           mode='date'
           onDateChange={this.onDateChangeOne.bind(this)}
           stlye={styles.datePicker}
@@ -72,7 +72,7 @@ class EditPostBrew extends Component {
     let datePickerTwo = (
       <View style={styles.datePicker}>
         <DatePickerIOS
-          date={new Date(this.state.PackagingDate)}
+          date={new Date(this.state.packagingDate)}
           mode='date'
           onDateChange={this.onDateChangeTwo.bind(this)}
           stlye={styles.datePicker}
@@ -87,7 +87,7 @@ class EditPostBrew extends Component {
               <TouchableWithoutFeedback onPress={this.toggleDatePickerOne.bind(this) }>
                 <View style={styles.dateField}>
                   <Text style={styles.dateText}>
-                    {moment(this.state.DateStartFermentation).format('MMMM Do YYYY')}
+                    {moment(this.state.dateStartFermentation).format('MMMM Do YYYY')}
                   </Text>
                 </View>
               </TouchableWithoutFeedback>
@@ -100,8 +100,8 @@ class EditPostBrew extends Component {
           <TextInput
             multiline={true}
             style={styles.ingredientsInput}
-            onChangeText={(FermentationNotes) => this.setState({FermentationNotes})}
-            value={this.state.FermentationNotes}
+            onChangeText={(fermentationNotes) => this.setState({fermentationNotes})}
+            value={this.state.fermentationNotes}
             placeholder='Fermentation notes'
           />
         </View>
@@ -111,7 +111,7 @@ class EditPostBrew extends Component {
               <TouchableWithoutFeedback onPress={this.toggleDatePickerTwo.bind(this) }>
                 <View style={styles.dateField}>
                   <Text style={styles.dateText}>
-                    {moment(this.state.PackagingDate).format('MMMM Do YYYY')}
+                    {moment(this.state.packagingDate).format('MMMM Do YYYY')}
                   </Text>
                 </View>
               </TouchableWithoutFeedback>
@@ -123,8 +123,8 @@ class EditPostBrew extends Component {
           <Text style={styles.title}>Final Gravity:</Text>
           <TextInput
             style={styles.brewInput}
-            onChangeText={(HydrometerReading) => this.setState({HydrometerReading})}
-            value={this.state.HydrometerReading}
+            onChangeText={(hydrometerReading) => this.setState({hydrometerReading})}
+            value={this.state.hydrometerReading}
             placeholder='Final gravity ex. 1.026'
             keyboardType='decimal-pad'
           />
@@ -133,8 +133,8 @@ class EditPostBrew extends Component {
           <Text style={styles.title}>Type of Packaging:</Text>
           <TextInput
             style={styles.brewInput}
-            onChangeText={(TypeOfPackaging) => this.setState({TypeOfPackaging})}
-            value={this.state.TypeOfPackaging}
+            onChangeText={(typeOfPackaging) => this.setState({typeOfPackaging})}
+            value={this.state.typeOfPackaging}
             placeholder='Type of packaging'
           />
         </View>
@@ -143,8 +143,8 @@ class EditPostBrew extends Component {
           <TextInput
             multiline={true}
             style={styles.ingredientsInput}
-            onChangeText={(NotesAboutPackaging) => this.setState({NotesAboutPackaging})}
-            value={this.state.NotesAboutPackaging}
+            onChangeText={(notesAboutPackaging) => this.setState({notesAboutPackaging})}
+            value={this.state.notesAboutPackaging}
             placeholder='Notes about packaging'
           />
         </View>
