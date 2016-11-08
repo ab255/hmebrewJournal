@@ -30,7 +30,7 @@ class EditPostBrew extends Component {
   }
 
   editBrew = async () => {
-    let uid = this.props.route.beer.uuid
+    let uid = JSON.stringify(this.props.route.beer.uuid)
     let brew = JSON.stringify(this.state)
     try {
       await store.edit(uid, brew)

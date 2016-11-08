@@ -15,11 +15,9 @@ class Store extends eventEmitter {
 
   all = async () => {
     try {
-      await AsyncStorage.getAllKeys((err, keys) => {
-        AsyncStorage.multiGet(keys, (err, stores) => {
-          let brews = stores.map(result => JSON.parse(result[1]));
-        })
-      })
+      const keys = await AsyncStorage.getAllKeys();
+      const brews = await AsyncStorage.multiGet(keys);
+      return brews.map(brew => JSON.parse(brew[1]));
     } catch (error) {
       console.log(error);
     }

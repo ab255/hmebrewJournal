@@ -66,7 +66,6 @@ class EditPreBrew extends Component {
             onChangeText={(ingredients) => this.setState({ingredients})}
             value={this.state.ingredients}
             placeholder='Beer Style'
-            autoCapitalize='words'
           />
         </View>
         <View>
