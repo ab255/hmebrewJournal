@@ -15,17 +15,17 @@ class EditPreBrew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      BeerName: this.props.route.beer.beerName,
-      BeerType: this.props.route.beer.beerType,
-      Ingredients: this.props.route.beer.ingredients,
-      Water: this.props.route.beer.water,
-      PostBrewIngredients: this.props.route.beer.postBrewIngredients,
-      TotalCosts: this.props.route.beer.totalCosts,
+      beerName: this.props.route.beer.beerName || '',
+      beerType: this.props.route.beer.beerType || '',
+      ingredients: this.props.route.beer.ingredients || '',
+      water: this.props.route.beer.water || '',
+      postBrewIngredients: this.props.route.beer.postBrewIngredients || '',
+      totalCosts: this.props.route.beer.totalCosts || '',
     }
   }
 
   editBrew = async () => {
-    let uid = this.props.route.beer.uuid
+    let uid = JSON.stringify(this.props.route.beer.uuid)
     let brew = JSON.stringify(this.state)
     try {
       await store.edit(uid, brew)
@@ -36,15 +36,14 @@ class EditPreBrew extends Component {
   }
 
   render() {
-    console.log(this);
     return (
       <KeyboardAwareScrollView style={styles.container}>
         <View>
           <Text style={styles.title}>Beer Name:</Text>
           <TextInput
             style={styles.brewInput}
-            onChangeText={(BeerName) => this.setState({BeerName})}
-            value={this.state.BeerName}
+            onChangeText={(beerName) => this.setState({beerName})}
+            value={this.state.beerName}
             placeholder='Beer Name'
             autoCapitalize='words'
           />
@@ -53,8 +52,8 @@ class EditPreBrew extends Component {
           <Text style={styles.title}>Beer Type:</Text>
           <TextInput
             style={styles.brewInput}
-            onChangeText={(BeerType) => this.setState({BeerType})}
-            value={this.state.BeerType}
+            onChangeText={(beerType) => this.setState({beerType})}
+            value={this.state.beerType}
             placeholder='Beer Style'
             autoCapitalize='words'
           />
@@ -64,8 +63,8 @@ class EditPreBrew extends Component {
           <TextInput
             multiline={true}
             style={styles.ingredientsInput}
-            onChangeText={(Ingredients) => this.setState({Ingredients})}
-            value={this.state.Ingredients}
+            onChangeText={(ingredients) => this.setState({ingredients})}
+            value={this.state.ingredients}
             placeholder='Beer Style'
             autoCapitalize='words'
           />
@@ -75,8 +74,8 @@ class EditPreBrew extends Component {
           <TextInput
             multiline={true}
             style={styles.brewInput}
-            onChangeText={(Water) => this.setState({Water})}
-            value={this.state.Water}
+            onChangeText={(water) => this.setState({water})}
+            value={this.state.water}
             placeholder='Water Used'
           />
         </View>
@@ -85,8 +84,8 @@ class EditPreBrew extends Component {
           <TextInput
             multiline={true}
             style={styles.ingredientsInput}
-            onChangeText={(PostBrewIngredients) => this.setState({PostBrewIngredients})}
-            value={this.state.PostBrewIngredients}
+            onChangeText={(postBrewIngredients) => this.setState({postBrewIngredients})}
+            value={this.state.postBrewIngredients}
             placeholder='Add post brew ingredients'
           />
         </View>
@@ -94,8 +93,8 @@ class EditPreBrew extends Component {
           <Text style={styles.title}>Total Cost:</Text>
           <TextInput
             style={styles.brewInput}
-            onChangeText={(TotalCosts) => this.setState({TotalCosts})}
-            value={this.state.TotalCosts}
+            onChangeText={(totalCosts) => this.setState({totalCosts})}
+            value={this.state.totalCosts}
             placeholder='Cost in Dollars'
             keyboardType='numbers-and-punctuation'
           />

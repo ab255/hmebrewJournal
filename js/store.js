@@ -33,6 +33,15 @@ class Store extends eventEmitter {
       console.log(error);
     }
   }
+
+  destroy = async (uid) => {
+    try {
+      await AsyncStorage.removeItem(uid)
+      await this.emit('change')
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 const store = new Store()

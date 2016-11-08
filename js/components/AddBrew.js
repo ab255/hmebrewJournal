@@ -33,7 +33,7 @@ export default class AddBrew extends Component {
   }
 
   saveBrew = async () => {
-    let uid = this.state.uuid
+    let uid = JSON.stringify(this.state.uuid)
     let brew = JSON.stringify(this.state)
     try {
       await store.add(uid, brew);

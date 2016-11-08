@@ -18,19 +18,19 @@ class EditBrewDay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      BrewDate: this.props.route.beer.brewDate,
-      TimeStarted: this.props.route.beer.timeStarted,
-      Weather: this.props.route.beer.weather,
-      MashNotes: this.props.route.beer.mashNotes,
-      BoilNotes: this.props.route.beer.boilNotes,
-      PostBoilNotes: this.props.route.beer.postBoilNotes,
-      OgReading: this.props.route.beer.ogReading,
+      brewDate: this.props.route.beer.brewDate,
+      timeStarted: this.props.route.beer.timeStarted || '',
+      weather: this.props.route.beer.weather || '',
+      mashNotes: this.props.route.beer.mashNotes || '',
+      boilNotes: this.props.route.beer.boilNotes || '',
+      postBoilNotes: this.props.route.beer.postBoilNotes || '',
+      ogReading: this.props.route.beer.ogReading || '',
       datePickerMode: 'hidden',
     }
   }
 
   editBrew = async () => {
-    let uid = this.props.route.beer.uuid
+    let uid = JSON.stringify(this.props.route.beer.uuid)
     let brew = JSON.stringify(this.state)
     try {
       await store.edit(uid, brew)
@@ -46,15 +46,14 @@ class EditBrewDay extends Component {
   }
 
   onDateChange = (date) => {
-    this.setState({ BrewDate: date })
+    this.setState({ brewDate: date })
   }
 
   render() {
-    console.log(this)
     let datePicker = (
       <View style={styles.datePicker}>
         <DatePickerIOS
-          date={new Date(this.state.BrewDate)}
+          date={new Date(this.state.brewDate)}
           mode='date'
           onDateChange={this.onDateChange.bind(this)}
           stlye={styles.datePicker}
@@ -69,7 +68,7 @@ class EditBrewDay extends Component {
             <TouchableWithoutFeedback onPress={ this.toggleDatePicker.bind(this) }>
               <View style={styles.dateField}>
                 <Text style={styles.dateText}>
-                  {moment(this.state.BrewDate).format('MMMM Do YYYY')}
+                  {moment(this.state.brewDate).format('MMMM Do YYYY')}
                 </Text>
               </View>
             </TouchableWithoutFeedback>
@@ -81,8 +80,8 @@ class EditBrewDay extends Component {
           <Text style={styles.title}>Start Time:</Text>
           <TextInput
             style={styles.brewInput}
-            onChangeText={(TimeStarted) => this.setState({TimeStarted})}
-            value={this.state.TimeStarted}
+            onChangeText={(timeStarted) => this.setState({timeStarted})}
+            value={this.state.timeStarted}
             keyboardType='numbers-and-punctuation'
             placeholder='Start of brewing time'
           />
@@ -91,8 +90,8 @@ class EditBrewDay extends Component {
           <Text style={styles.title}>Current Weather:</Text>
           <TextInput
             style={styles.brewInput}
-            onChangeText={(Weather) => this.setState({Weather})}
-            value={this.state.Weather}
+            onChangeText={(weather) => this.setState({weather})}
+            value={this.state.weather}
             keyboardType='decimal-pad'
             placeholder='Current temperature'
           />
@@ -102,8 +101,8 @@ class EditBrewDay extends Component {
           <TextInput
             multiline={true}
             style={styles.ingredientsInput}
-            onChangeText={(MashNotes) => this.setState({MashNotes})}
-            value={this.state.MashNotes}
+            onChangeText={(mashNotes) => this.setState({mashNotes})}
+            value={this.state.mashNotes}
             placeholder='Mash or steep notes (if any)'
           />
         </View>
@@ -112,8 +111,8 @@ class EditBrewDay extends Component {
           <TextInput
             multiline={true}
             style={styles.ingredientsInput}
-            onChangeText={(BoilNotes) => this.setState({BoilNotes})}
-            value={this.state.BoilNotes}
+            onChangeText={(boilNotes) => this.setState({boilNotes})}
+            value={this.state.boilNotes}
             placeholder='Add boil notes'
           />
         </View>
@@ -122,8 +121,8 @@ class EditBrewDay extends Component {
           <TextInput
             multiline={true}
             style={styles.ingredientsInput}
-            onChangeText={(PostBoilNotes) => this.setState({PostBoilNotes})}
-            value={this.state.PostBoilNotes}
+            onChangeText={(postBoilNotes) => this.setState({postBoilNotes})}
+            value={this.state.postBoilNotes}
             placeholder='Add post boil notes'
           />
         </View>
@@ -131,8 +130,8 @@ class EditBrewDay extends Component {
           <Text style={styles.title}>Original Gravity:</Text>
           <TextInput
             style={styles.brewInput}
-            onChangeText={(OgReading) => this.setState({OgReading})}
-            value={this.state.OgReading}
+            onChangeText={(ogReading) => this.setState({ogReading})}
+            value={this.state.ogReading}
             placeholder='Original gravity ex. 1.065'
             keyboardType='decimal-pad'
           />
