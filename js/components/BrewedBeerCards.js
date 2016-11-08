@@ -33,7 +33,7 @@ export default class BrewedBeerCards extends Component {
   componentDidMount() {
     store.addListener('change', async () => {
       try{
-        await this.loadInitialState().done()
+        await this.getBrewData().done()
       } catch (error) {
         console.log(error);
       }
@@ -41,20 +41,15 @@ export default class BrewedBeerCards extends Component {
   }
 
   componentWillMount() {
-    this.loadInitialState().done()
+    this.getBrewData().done()
   }
 
 
-  loadInitialState = async () => {
+  getBrewData = async () => {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     try {
-      await AsyncStorage.getAllKeys((err, keys) => {
-        AsyncStorage.multiGet(keys, (err, stores) => {
-          let brews = stores.map(result => JSON.parse(result[1]));
-          this.setState({ dataSource: ds.cloneWithRows(brews) })
-          console.log(brews)
-        })
-      })
+      const brews = await store.all();
+      this.setState({ dataSource: ds.cloneWithRows(brews) })
     } catch (error) {
       console.log(error);
     }
