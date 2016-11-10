@@ -23,8 +23,7 @@ export default class IndividualBrewNotes extends Component {
     return (
       <TabBarIOS
         tintColor='#F7D098'
-        barTintColor='#630A10'
-        style={styles.container}>
+        barTintColor='#630A10'>
         <TabBarIOS.Item
           icon={require('../icons/preBrew.png')}
           title='Pre Brew'
@@ -62,8 +61,3 @@ export default class IndividualBrewNotes extends Component {
     )
   }
 }
-
-styles = StyleSheet.create({
-  container: {
-  }
-})
