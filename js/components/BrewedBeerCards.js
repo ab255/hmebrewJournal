@@ -34,6 +34,7 @@ export default class BrewedBeerCards extends Component {
 
 
   componentDidMount() {
+    this.getBrewData().done()
     store.addListener('change', async () => {
       try{
         await this.getBrewData().done()
@@ -42,11 +43,6 @@ export default class BrewedBeerCards extends Component {
       }
     });
   }
-
-  componentWillMount() {
-    this.getBrewData().done()
-  }
-
 
   getBrewData = async () => {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
