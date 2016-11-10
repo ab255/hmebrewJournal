@@ -1,12 +1,12 @@
 import 'react-native';
 import React from 'react';
-import hnjapp from '../js/components/HBJApp.js';
+import BrewedBeerCards from '../js/components/BrewedBeerCards.js';
 
 import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
   const tree = renderer.create(
-    <hbjapp />
+    <BrewedBeerCards />
   ).toJSON();
   expect(tree.toMatchSnapshot());
 });

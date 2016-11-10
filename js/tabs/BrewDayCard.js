@@ -22,7 +22,7 @@ class BrewDayCard extends Component {
         <View>
           <Text style={styles.title}>Start Time</Text>
           <Text style={styles.body}>{this.props.timeStarted}</Text>
-        </View>
+        </View> 
         <View>
           <Text style={styles.title}>Current weather</Text>
           <Text style={styles.body}>{this.props.weather} ºF</Text>

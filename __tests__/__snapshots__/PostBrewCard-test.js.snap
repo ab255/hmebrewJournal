@@ -1,0 +1,242 @@
+exports[`test renders correctly 1`] = `
+<ScrollView
+  style={
+    Object {
+      "padding": 10,
+    }
+  }>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#911F27",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "marginBottom": 7,
+          "textDecorationLine": "underline",
+        }
+      }>
+      Fermentation Start
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#630A10",
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      }>
+      November 9th 2016
+    </Text>
+  </View>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#911F27",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "marginBottom": 7,
+          "textDecorationLine": "underline",
+        }
+      }>
+      Fermentation Notes
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#630A10",
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      } />
+  </View>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#911F27",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "marginBottom": 7,
+          "textDecorationLine": "underline",
+        }
+      }>
+      Packaging Date
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#630A10",
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      }>
+      November 9th 2016
+    </Text>
+  </View>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#911F27",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "marginBottom": 7,
+          "textDecorationLine": "underline",
+        }
+      }>
+      Final Gravity
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#630A10",
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      } />
+  </View>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#911F27",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "marginBottom": 7,
+          "textDecorationLine": "underline",
+        }
+      }>
+      ABV
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#630A10",
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      }>
+      0.0
+      %
+    </Text>
+  </View>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#911F27",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "marginBottom": 7,
+          "textDecorationLine": "underline",
+        }
+      }>
+      Attenuation
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#630A10",
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      }>
+      0.0%
+    </Text>
+  </View>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#911F27",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "marginBottom": 7,
+          "textDecorationLine": "underline",
+        }
+      }>
+      Type of Packaging
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#630A10",
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      } />
+  </View>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#911F27",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "marginBottom": 7,
+          "textDecorationLine": "underline",
+        }
+      }>
+      Packaging Notes
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#630A10",
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      } />
+  </View>
+</ScrollView>
+`;

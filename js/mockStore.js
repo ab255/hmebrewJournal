@@ -1,5 +1,5 @@
-const store = [
-  {beerName: 'Green Bomber',
+const beer = {
+  beerName: 'Green Bomber',
   beerType: 'Imperial IPA',
   ingredients: 'adsfasdfasdfalskdjf;lsdjfkljalhsdkjfhaksjdhfkjasdhlajkhsdkljfhakjsdhfkjlahsdfkjahsldkjfhasdkjfhadskljfhllkajsdhfkjashfdkjhasdkjfhaksdjhfkjasdhalkjsdhfkjhasdlkjfhasdlkjfhakjsdhlkjajskdhfkljahsdkfjhasdkjhfkajdshfkjhadskjlfhkajsdhfkjahsdkjfhakjsdhfkjasdhfkjhasdkjfhaskjdhfkajsdhfkjhaskjdfhaskjdhfkjashfdkjhaskljdhakjsdhflkjadshlkfjhdklajfhaklsdjhfkjlashdklfjhasdkjfhakjsdhfkjasdhfkhaskjdhfkajshdfkjlasdh',
   water: '',
@@ -19,28 +19,7 @@ const store = [
   typeOfPackaging: '',
   notesAboutPackaging: '',
   uuid: 'f7ff7086-c474-44a0-bcca-f2fde6fd3118',
-  },
-  {beerName: 'Red Dawn',
-  beerType: 'American Amber Ale',
-  ingredients: '',
-  water: '',
-  postBrewIngredients: '',
-  totalCosts: '',
-  brewDate: '2013-03-26T18:12:38.197Z',
-  timeStarted: '',
-  weather: '',
-  mashNotes: '',
-  boilNotes: '',
-  postBoilNotes: '',
-  ogReading: '',
-  dateStartFermentation: '',
-  fermentationNotes: '',
-  packagingDate: '',
-  hydrometerReading: '',
-  typeOfPackaging: '',
-  notesAboutPackaging: '',
-  uuid: '8c4516d0-bc37-4251-beca-43c8332eee47',
+// }
 }
-];
 
-module.exports = store;
+module.exports = beer;
