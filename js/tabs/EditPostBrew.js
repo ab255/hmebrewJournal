@@ -34,7 +34,7 @@ class EditPostBrew extends Component {
     let brew = JSON.stringify(this.state)
     try {
       await store.edit(uid, brew)
-      this.props.navigator.pop()
+      this.props.navigator.popToTop()
     } catch (error) {
       console.log(error);
     }

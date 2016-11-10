@@ -17,7 +17,7 @@ class PostBrewCard extends Component {
       JSON.parse(this.props.hydrometerReading || null)
     )
     let ABV = (
-      (((OG - FG) / 7.5) * 1000).toFixed(1)
+      (((OG - FG) * 1000) / 7.5).toFixed(1)
     )
     let attenuation = (
       ((1000 * ((OG - FG) / OG))).toFixed(1)
@@ -34,12 +34,9 @@ class PostBrewCard extends Component {
       <ScrollView style={styles.container}>
         <View>
           <Text style={styles.title}>Fermentation Start</Text>
-          { this.props.dateStartFermentation === null ?
-            <Text style={styles.body}>
-              {moment(this.props.dateStartFermentation).format('MMMM Do YYYY')}
-            </Text> :
-            <Text style={styles.body}></Text>
-          }
+          <Text style={styles.body}>
+            {moment(this.props.dateStartFermentation).format('MMMM Do YYYY')}
+          </Text>
         </View>
         <View>
           <Text style={styles.title}>Fermentation Notes</Text>
@@ -47,12 +44,9 @@ class PostBrewCard extends Component {
         </View>
         <View>
           <Text style={styles.title}>Packaging Date</Text>
-          { this.props.packagingDate === null ?
           <Text style={styles.body}>
             {moment(this.props.packagingDate).format('MMMM Do YYYY')}
-          </Text> :
-          <Text style={styles.body}></Text>
-          }
+          </Text>
         </View>
         <View>
           <Text style={styles.title}>Final Gravity</Text>

@@ -31,7 +31,9 @@ exports[`test renders correctly 1`] = `
           "fontSize": 16,
           "marginBottom": 10,
         }
-      } />
+      }>
+      November 9th 2016
+    </Text>
   </View>
   <View>
     <Text
@@ -87,7 +89,9 @@ exports[`test renders correctly 1`] = `
           "fontSize": 16,
           "marginBottom": 10,
         }
-      } />
+      }>
+      November 9th 2016
+    </Text>
   </View>
   <View>
     <Text
